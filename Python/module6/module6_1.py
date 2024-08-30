@@ -1,4 +1,4 @@
-class Animal:   #родительский класс
+class Animal:  #родительский класс
     def __init__(self, name):
         self.alive = True
         self.fed = False
@@ -12,25 +12,26 @@ class Animal:   #родительский класс
             print(f"{self.name} не стал есть {food.name}")
             self.alive = False
 
-class Plant:    #родительский класс
+
+class Plant:  #родительский класс
     def __init__(self, name):
         self.edible = False
         self.name = name
 
 
-class Mammal(Animal):   # класс наследник Animal
-   pass
-
-
-class Predator(Animal):    # класс наследник Animal
+class Mammal(Animal):  # класс наследник Animal
     pass
 
 
-class Flower(Plant):   # класс наследник Plant
+class Predator(Animal):  # класс наследник Animal
     pass
 
 
-class Fruit(Plant):    # класс наследник Plant
+class Flower(Plant):  # класс наследник Plant
+    pass
+
+
+class Fruit(Plant):  # класс наследник Plant
     def __init__(self, name):
         super().__init__(name)
         self.edible = True
