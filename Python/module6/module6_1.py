@@ -4,14 +4,6 @@ class Animal:   #родительский класс
         self.fed = False
         self.name = name
 
-
-class Plant:    #родительский класс
-    def __init__(self, name):
-        self.edible = False
-        self.name = name
-
-
-class Mammal(Animal):   # класс наследник Animal
     def eat(self, food):
         if food.edible:
             print(f"{self.name} съел {food.name}")
@@ -20,15 +12,18 @@ class Mammal(Animal):   # класс наследник Animal
             print(f"{self.name} не стал есть {food.name}")
             self.alive = False
 
+class Plant:    #родительский класс
+    def __init__(self, name):
+        self.edible = False
+        self.name = name
+
+
+class Mammal(Animal):   # класс наследник Animal
+   pass
+
 
 class Predator(Animal):    # класс наследник Animal
-    def eat(self, food):
-        if food.edible:
-            print(f"{self.name} съел {food.name}")
-            self.fed = True
-        else:
-            print(f"<self.name> не стал есть <food.name>")
-            self.alive = False
+    pass
 
 
 class Flower(Plant):   # класс наследник Plant
