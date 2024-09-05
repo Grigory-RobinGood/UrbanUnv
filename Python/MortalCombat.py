@@ -1,5 +1,6 @@
 class Hero:
 
+
     def __init__(self, health=100, level=1, attack_damage=10, item_self=0, item_attack=0):
         self.health = health * level + item_self
         self.level = level
