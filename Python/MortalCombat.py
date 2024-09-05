@@ -94,7 +94,7 @@ class Item:
             print(f"Вы использовали {self.name}, восстановив {self.effect_value} здоровья!")
         elif self.effect_type == 'boost':
             hero.attack_damage += self.effect_value
-            print(f"Вы использовали {self.name}, увеличив урон атаки на {self.effect_value}!")  
+            print(f"Вы использовали {self.name}, увеличив урон атаки на {self.effect_value}!")
 
 
 def main():
