@@ -111,7 +111,21 @@ def main():
 
     print("\nНачинается бой!")
     while hero.health > 0 and orc.health > 0:
-        hero.attack(orc)
+        action = input(
+            "Выберите действие (атака (введите 1) / "
+            "использование зелья 'Зелье здоровья' (введите 2) / "
+            "использование 'Эликсир силы' (введите 3)): ").strip().lower()
+
+        if action == "1":
+            hero.attack(orc)
+        elif action == "2":
+            hero.use_item("Зелье здоровья")
+        elif action == "3":
+            hero.use_item("Эликсир силы")
+        else:
+            print("Недопустимое действие. Попробуйте снова.")
+            continue  # Пропускаем итерацию цикла
+
         if orc.health > 0:
             orc.attack(hero)
         print()
@@ -119,7 +133,6 @@ def main():
     if hero.health > 0:
         print(f"Вы победили {orc.name}!")
         hero.gain_experience(50)  # Получаем опыт за победу
-        hero.find_item(healing_potion)  # Находим предмет после боя
     else:
         print(f"Вы были побеждены {orc.name}...")
 
