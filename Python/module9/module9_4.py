@@ -17,7 +17,7 @@ def get_advanced_writer(file_name):
     return write_everything
 
 
-write = get_advanced_writer('example.txt')
+write = get_advanced_writer('module9_4_file.txt')
 write('Это строчка', ['А', 'это', 'уже', 'число', 5, 'в', 'списке'])
 
 # Метод __call__:
