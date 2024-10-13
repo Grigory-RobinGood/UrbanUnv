@@ -14,21 +14,18 @@ class Bank:
             with self.lock:  # Блокируем доступ к балансу
                 self.balance += amount
                 print(f"Пополнение: {amount}. Баланс: {self.balance}")
-                if self.balance >= 500 and self.lock.locked():
-                    self.lock.release()  # Разблокируем, если баланс >= 500
             time.sleep(0.001)  # Имитация задержки
 
     def take(self):
         for i in range(100):
             amount = random.randint(50, 500)  # Случайное снятие
-            print(f"Запрос на {amount}")
+            print(f"Запрос на снятие {amount}")
             with self.lock:  # Блокируем доступ к балансу
                 if amount <= self.balance:
                     self.balance -= amount
                     print(f"Снятие: {amount}. Баланс: {self.balance}")
                 else:
-                    print("Запрос отклонён, недостаточно средств")
-                    self.lock.acquire()  # Блокируем поток, если недостаточно средств
+                    print(f"Запрос отклонён: недостаточно средств для снятия {amount}. Баланс: {self.balance}")
             time.sleep(0.001)  # Имитация задержки
 
 
@@ -36,8 +33,8 @@ class Bank:
 bk = Bank()
 
 # Создание потоков для методов deposit и take
-th1 = threading.Thread(target=Bank.deposit, args=(bk,))
-th2 = threading.Thread(target=Bank.take, args=(bk,))
+th1 = threading.Thread(target=bk.deposit)
+th2 = threading.Thread(target=bk.take)
 
 # Запуск потоков
 th1.start()
