@@ -16,6 +16,7 @@ class Runner:
 
 
 class RunnerTest(unittest.TestCase):
+    is_frozen = True
     def test_walk(self):
         runner = Runner("test runner")
         for i in range(10):

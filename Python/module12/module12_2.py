@@ -45,6 +45,7 @@ class Tournament:
 # Тестирование
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = False
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
