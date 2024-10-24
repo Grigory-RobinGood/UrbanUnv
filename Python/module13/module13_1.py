@@ -5,10 +5,10 @@ async def start_strongman(name, power):
     print(f"Силач {name} начал соревнование")
     number_atlas = 1
     for i in range(1, 6):
-        await asyncio.sleep(power / 2)
+        await asyncio.sleep(10 / power)
         number_atlas += 1
         print(f"Силач {name} поднял {i} шар")
-    return name
+    print(f"Силач {name} закончил соревнование")
 
 
 async def start_tournament():
@@ -18,11 +18,6 @@ async def start_tournament():
     await task1
     await task2
     await task3
-
-    for completed_task in asyncio.as_completed([task1, task2, task3]):
-        name = await completed_task  # Получаем результат (имя)
-        print(f"Силач {name} закончил соревнование")
-        break
 
 
 asyncio.run(start_tournament())
