@@ -21,3 +21,4 @@ async def user_page(user_id: int):
 @app.get("/user")
 async def user_post(username: str, age: int = 54):
     return {f"Информация о пользователе. Имя: {username}, Возраст: {age}"}
+
