@@ -26,7 +26,8 @@ async def add_user(username: str = Path(min_length=5,
                    age: int = Path(ge=18,
                                    le=120,
                                    description="Enter age",
-                                   example="24")) -> User:
+                                   example="24")
+                   ) -> User:
     user_id = len(users) + 1
     new_user = User(id=user_id, username=username, age=age)
     users.append(new_user)
@@ -36,13 +37,13 @@ async def add_user(username: str = Path(min_length=5,
 @app.put("/user/{user_id}/{username}/{age}")
 async def update_user(user_id: int,
                       username: str = Path(min_length=5,
-                                        max_length=20,
-                                        description="Enter username",
-                                        example="UrbanUser"),
+                                           max_length=20,
+                                           description="Enter username",
+                                           example="UrbanUser"),
                       age: int = Path(ge=18,
-                                   le=120,
-                                   description="Enter age",
-                                   example="24")
+                                      le=120,
+                                      description="Enter age",
+                                      example="24")
                       ) -> User:
     if user_id < 1 or user_id > len(users):
         raise HTTPException(status_code=404, detail="User was not found")
