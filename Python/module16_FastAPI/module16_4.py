@@ -35,7 +35,10 @@ async def add_user(username: str = Path(min_length=5,
 
 
 @app.put("/user/{user_id}/{username}/{age}")
-async def update_user(user_id: int,
+async def update_user(user_id: int = Path(ge=1,
+                                          le=100,
+                                          description="Enter User ID",
+                                          example="25"),
                       username: str = Path(min_length=5,
                                            max_length=20,
                                            description="Enter username",
